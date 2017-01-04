@@ -1,1 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+h1 {
+	text-align: center;
+}
 
+.panel-title {
+	font-size: 18px;
+}
+
+.btn {
+	font-size: 18px;
+}
+
+.btn:focus{
+  outline: none;
+}
+
+.no-padding {
+	padding: 0;
+}
+#calculator-buttons {
+	@extend .no-padding;
+}
+
+@media (max-width: 480px) {
+	.calculator-column {
+		padding: 0 5px;
+	}
+	.btn-block+.btn-block {
+    margin-top: 15px;
+	}
+}

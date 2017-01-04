@@ -214,40 +214,18 @@ const Header = (props) => (
 	<PageHeader>FCC Calculator <small>with React + Redux</small></PageHeader>
 )
 
-const ButtonAC = (props) => (
+const ButtonCommand = (props) => (
 	<Button
-		bsStyle='danger'
+		bsStyle={props.bsStyle}
 		block
 		onClick={() => props.onClick()} >
-		AC
+		{props.contents}
 	</Button>
 )
-ButtonAC.propTypes = {
-	onClick: PropTypes.func.isRequired
-}
-
-const ButtonCE = (props) => (
-	<Button
-		bsStyle='warning'
-		block
-		onClick={() => props.onClick()} >
-		CE
-	</Button>
-)
-ButtonCE.propTypes = {
-	onClick: PropTypes.func.isRequired
-}
-
-const ButtonEquals = (props) => (
-	<Button
-		bsStyle='success'
-		block
-		onClick={() => props.onClick()} >
-		=
-	</Button>
-)
-ButtonEquals.propTypes = {
-	onClick: PropTypes.func.isRequired
+ButtonCommand.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	bsStyle: PropTypes.string.isRequired,
+	contents: PropTypes.string.isRequired
 }
 
 const ButtonOperation = (props) => (
@@ -291,20 +269,20 @@ CalculatorDisplay.propTypes = {
 const CalculatorButtons = (props) => (
 	<Col id='calculator-buttons' xs={12} md={6} mdOffset={3}>
   	<Col className='calculator-column' xs={3}>
-  		<ButtonAC onClick={props.handleAllClearClick} />
+  		<ButtonCommand contents='AC' bsStyle='danger' onClick={props.handleAllClearClick} />
   		<ButtonNumber number={7} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={4} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={1} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={0} onClick={props.handleAppendToEntry} />
   	</Col>
   	<Col className='calculator-column' xs={3}>
-  		<ButtonCE onClick={props.handleClearEntryClick} />
+  		<ButtonCommand contents='CE' bsStyle='warning' onClick={props.handleClearEntryClick} />
   		<ButtonNumber number={8} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={5} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={2} onClick={props.handleAppendToEntry} />
   	</Col>
   	<Col className='calculator-column' xs={3}>
-  		<ButtonEquals value={props.value} operator={props.operator} total={props.total} onClick={props.handleShowTotal} />
+  		<ButtonCommand contents='=' bsStyle='success' onClick={props.handleShowTotal} />
   		<ButtonNumber number={9} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={6} onClick={props.handleAppendToEntry} />
   		<ButtonNumber number={3} onClick={props.handleAppendToEntry} />
